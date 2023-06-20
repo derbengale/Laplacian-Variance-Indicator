@@ -9,6 +9,7 @@ Install these libraries with pip:
 `pip install tkinter pyautogui numpy opencv-python matplotlib`
 
 You can run the script with Python 3
+
 `python LVCalculator.py`
 
 # Usage
