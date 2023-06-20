@@ -11,8 +11,8 @@ You can run the script with Python 3:
 
 python LVCalculator.py
 
-Usage
+# Usage
 
-    Launch the application. Two windows will appear: a small, draggable, semi-transparent window, and another window displaying a real-time graph.
-    Drag the small semi-transparent window to any area on your screen whose focus/sharpness you want to monitor.
-    Observe the real-time graph. The plotted value indicates the focus/sharpness of the image under the window. Higher values mean the image is more in-focus or less blurred.
+Launch the application. Two windows will appear: a small, draggable, semi-transparent window, and another window displaying a real-time graph.
+Drag the small semi-transparent window to any area on your screen whose focus/sharpness you want to monitor.
+Observe the real-time graph while changing the focus of your microscope or whatever. The plotted value indicates the focus/sharpness of the image under the window. Higher values mean the image is more in-focus or less blurred.
