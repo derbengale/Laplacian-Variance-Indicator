@@ -6,10 +6,10 @@ This Python application creates a semi-transparent, draggable window that can be
 # How to Run
 Install these libraries with pip:
 
-'pip install tkinter pyautogui numpy opencv-python matplotlib'
+`pip install tkinter pyautogui numpy opencv-python matplotlib`
 
 You can run the script with Python 3
-'python LVCalculator.py'
+`python LVCalculator.py`
 
 # Usage
 
