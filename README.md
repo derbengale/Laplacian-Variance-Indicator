@@ -7,9 +7,9 @@ This Python application creates a semi-transparent, draggable window that can be
 Install these libraries with pip:
 
 'pip install tkinter pyautogui numpy opencv-python matplotlib'
-You can run the script with Python 3:
 
-python LVCalculator.py
+You can run the script with Python 3
+'python LVCalculator.py'
 
 # Usage
 
