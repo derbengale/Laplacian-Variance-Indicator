@@ -1,5 +1,5 @@
 import tkinter as tk
-import pyautogui
+import dxcam
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
@@ -40,7 +40,9 @@ class TransparentWindow(tk.Tk):
 
         # Initialize a FigureCanvasTkAgg and data for the plot
         self.fig, self.ax = plt.subplots()
+        self.ax.set_xlabel("Time")
         self.line, = self.ax.plot([])
+        plt.xticks([])
         self.graph_window = tk.Toplevel(self)
         self.graph_window.wm_attributes("-topmost", 1)
         self.mcanvas = FigureCanvasTkAgg(self.fig, master=self.graph_window)
@@ -51,9 +53,10 @@ class TransparentWindow(tk.Tk):
 
         # Setup to close the whole program when the graph window is closed
         self.graph_window.protocol("WM_DELETE_WINDOW", self.quit)
-
+        self.camera = dxcam.create()
+        self.delayy = 4
         # Call update_graph every 1000 milliseconds
-        self.after(1, self.update_graph)
+        self.after(self.delayy, self.update_graph)
 
     # Function to start move event
     def start_move(self, event):
@@ -88,10 +91,8 @@ class TransparentWindow(tk.Tk):
     def update_graph(self):
         pos = self.get_pos()
         try:
-            screenshot = pyautogui.screenshot(region=(pos[0][0], pos[0][1], pos[1][0] - pos[0][0], pos[1][1] - pos[0][1]))
-            t0=time()
+            screenshot = self.camera.grab(region=(pos[0][0], pos[0][1], pos[1][0], pos[1][1]))
             laplacian_variance = self.variance_of_laplacian(screenshot)
-            print(time()-t0)
             # Add the latest laplacian variance to the data and keep the latest 30 points
             self.laplacian_variances.append(laplacian_variance)
             self.laplacian_variances = self.laplacian_variances[-30:]
@@ -120,7 +121,7 @@ class TransparentWindow(tk.Tk):
         except:
             pass
         # Call this function again after 100 milliseconds
-        self.after(1, self.update_graph)
+        self.after(self.delayy, self.update_graph)
 
 
     # Function to stop move event
